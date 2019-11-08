@@ -1,0 +1,89 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+  <div class="column align-center text-center">
+    <h3 style="color: #623073;">Course Detail</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <div class="info-form">
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12 pt-4">
+            <label for="courseTitle">Course Title</label>
+            <input type="text" placeholder="Course Title *" id="courseTitle" formControlName="title"
+              class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">Course Title is required</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 pt-4">
+            <label for="courseCode">Course Code</label>
+            <input type="text" placeholder="Course Code *" id="courseCode" formControlName="code" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.code.errors }" />
+            <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+              <div *ngIf="f.code.errors.required">Course Code is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 pt-4">
+            <label for="courseUrl">Course Url</label>
+            <input type="text" placeholder="Course Url *" id="courseUrl" formControlName="url" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.url.errors }" />
+            <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+              <div *ngIf="f.url.errors.required">Course Url is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 pt-4">
+            <label for="description">Course Description</label>
+            <input type="text" placeholder="Course Description *" id="description" formControlName="description"
+              class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">Course Description is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12 pt-4">
+            <label for="courseType">Course Type</label>
+            <select formControlName="courseType" id="courseType" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.courseType.errors }">
+              <option value="">Choose Course Type</option>
+              <option *ngFor="let course of courseType" [ngValue]="course" (change)="changeCourseType($event)">
+                {{course}}
+              </option>
+            </select>
+            <div *ngIf="submitted && f.courseType.errors" class="invalid-feedback">
+              <div *ngIf="f.courseType.errors.required">Course Type is required</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 pt-4">
+            <label for="documentType">Document Type</label>
+            <select formControlName="docType" class="form-control" id="documentType"
+              [ngClass]="{ 'is-invalid': submitted && f.docType.errors }">
+              <option value="">Choose Document Type</option>
+              <option *ngFor="let document of documentType" [ngValue]="document" (change)="changeDocumentType($event)">
+                {{document}}
+              </option>
+            </select>
+            <div *ngIf="submitted && f.docType.errors" class="invalid-feedback">
+              <div *ngIf="f.docType.errors.required">Document Type is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 pt-4" style="text-align: center;">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/onboarding/course-detail']"
+              style="margin-left: 15px;">Back</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~angular2-toaster/toaster.css";
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px !important;
+    }
+}
+
+.navbar-toggler {
+    background-color: #e2542f !important;
+}
+
+.bs-datepicker-container {
+    padding: 0 !important;
+}
+.theme-green .bs-datepicker-head {
+    background-color: #623073 !important;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #e2542f !important;
+}
+.theme-green .bs-datepicker-body table td.week span {
+    color: #623073 !important;
+}
+
+bs-datepicker-container {
+    left: 50px !important;
+}
+
+.fixed-top {
+    position: inherit !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #e2542f !important;
+    border-color: #e2542f !important;
+    border: 0 !important;
+}
+body {
+    font-family: Arial,Helvetica,sans-serif !important;
+    background-color: #fff;
+}
+
+a {
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-weight: bolder;
+    text-align: left;
+    color: #623073 !important;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.42857;
+    font-weight: inherit;
+    text-decoration: none;
+}
+
+a:hover, a:visited {
+    text-decoration: none;
+    color: #e2542f !important;
+}
+.table-content {
+    font-family: Georgia;
+    font-size: 15px;
+}
+.card-header {
+    color: white !important;
+    background-color: #623073 !important;
+}
+.card-footer {
+    background-color: #b3533b !important;
+    color: white !important;
+}
+.card-footer-new {
+    text-align: center;
+    color: #e2542f;
+}
+.col {
+    margin-bottom: 1rem;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+legend {
+    background-color: #421853;
+    color: white !important;
+    padding: 7px 0px 7px 15px !important;
+ }
+
+ .page-item.active .page-link {
+    z-index: 1;
+    color: #fff !important;
+    background-color: #623073 !important;
+    border-color: #421853 !important;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6d3583 !important;
+    border-color: #6d3583 !important;
+}
+
+.fa {
+    color: #623073 !important;
+    font-size: 15px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    cursor: pointer !important;
+}
+
+.toast-top-right {
+    top: 15% !important;
+}
+.toast-success {
+    background-color: #51a351 !important;
+}  
+.toast-error {
+    background-color: #bd362f !important;
+}  
+.toast-info {
+    background-color: #2f96b4 !important;
+}  
+.toast-wait {
+    background-color: #2f96b4 !important;
+}  
+.toast-warning {
+    background-color: #f89406 !important;
+}  
+#toast-container > div {
+    opacity: 0.9 !important;
+    box-shadow: 0 0 12px #6d3583 !important;
+}
+
+.page-title {
+    color: #623073;
+    font-size: 1.75rem;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0;
+}

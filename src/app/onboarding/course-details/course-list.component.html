@@ -1,0 +1,54 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+  <div class="column align-center text-center">
+    <h3 style="color: #623073;">Course Detail</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-right" style="margin-right: 0px !important;margin-bottom: 10px;">
+    <button [routerLink]="['/onboarding/course-detail/add']" class="btn btn-primary">Add Course</button>
+  </div>
+</div>
+
+<div class="table-responsive text-nowrap table-content">
+  <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr style="background-color: #623073;color: #fff;">
+        <th class="text-center">Title</th>
+        <th class="text-center">Code</th>
+        <th>Url</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Document Type</th>
+        <th class="text-center">Course Type</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let courseData of courseDetail; let i= index">
+        <td>{{courseData.title}}</td>
+        <td>{{courseData.code}}</td>
+        <td>{{courseData.url}}</td>
+        <td>{{courseData.description}}</td>
+        <td>{{courseData.documentType}}</td>
+        <td>{{courseData.courseType}}</td>
+        <td>
+          <i class="fa fa-pencil-square-o" [routerLink]="['/onboarding/course-detail/edit', courseData.id]"
+            aria-hidden="true"></i>
+          <!-- <i class="fa fa-trash" (click)="deleteCourseDetail(courseData.id)" aria-hidden="true">
+          </i> -->
+        </td>
+      </tr>
+      <tr *ngIf="!courseDetail">
+        <td class="text-center" colspan="100%"> No Record Found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row" *ngIf="courseDetail">
+  <div class="col" style="margin-right: 0px !important;">
+    <pagination [boundaryLinks]="true" [totalItems]="totalItems" class="float-right" (pageChanged)="pageChanged($event)"
+      [maxSize]="5" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+  </div>
+</div>

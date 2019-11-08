@@ -1,0 +1,398 @@
+﻿<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+    <div class="column align-center text-center">
+        <h3 style="color: #623073;">{{mode}} Associate Detail</h3>
+    </div>
+</div>
+
+<div style="text-align:right;padding-bottom: 15px;">
+    <a [routerLink]="['/onboarding/associate-List']" class="btn btn-primary">
+        Back
+    </a>
+</div>
+<form [formGroup]="associateForm">
+    <div class="bs-stepper">
+        <div class="bs-stepper-header" role="tablist">
+            <!-- your steps here -->
+            <div class="step" data-target="#logins-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="logins-part"
+                    id="logins-part-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Basic Information</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#information-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="information-part"
+                    id="information-part-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">Various information</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#information-part1">
+                <button type="button" class="step-trigger" role="tab" aria-controls="information-part1"
+                    id="information-part1-trigger">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Various information new</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#information-part2">
+                <button type="button" class="step-trigger" role="tab" aria-controls="information-part2"
+                    id="information-part2-trigger">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Various information sdfsd</span>
+                </button>
+            </div>
+        </div>
+        <div class="bs-stepper-content">
+            <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                <fieldset style="background: #f2f2f2;">
+                    <legend>Basic Information</legend>
+                    <div class="needs-validation" novalidate style="padding: 10px;">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="CognizantId">Cognizant ID</label>
+                                <input type="text" class="form-control" formControlName="CognizantId" id="CognizantId"
+                                    name="CognizantId">
+                                <div *ngIf="formErrors.CognizantId" class="alert alert-danger">
+                                    {{formErrors.CognizantId}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="AssociateName">Assocaite Name</label>
+                                <input type="text" class="form-control" formControlName="AssociateName"
+                                    id="AssociateName" name="AssociateName">
+                                <div *ngIf="formErrors.AssociateName" class="alert alert-danger">
+                                    {{formErrors.AssociateName}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="CognizantEmailId">Cognizant Email Id</label>
+                                <input type="text" class="form-control" formControlName="CognizantEmailId"
+                                    id="CognizantEmailId" name="CognizantEmailId" />
+                                <div *ngIf="formErrors.CognizantEmailId" class="alert alert-danger">
+                                    {{formErrors.CognizantEmailId}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="CognizantRoleId">Cognizant Role</label>
+                                <select class="form-control" formControlName="CognizantRoleId" id="CognizantRoleId"
+                                    name="CognizantRoleId">
+                                    <option [ngValue]="null">Select Cognizant Role</option>
+                                    <option *ngFor="let cognizantRole of role" [value]="cognizantRole.Id">
+                                        {{cognizantRole.Name }}
+                                    </option>
+                                </select>
+                                <div *ngIf="formErrors.CognizantRoleId" class="alert alert-danger">
+                                    {{formErrors.CognizantRoleId}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="ProjectId">Project Name</label>
+                                <select class="form-control" formControlName="ProjectId" id="ProjectId" name="ProjectId"
+                                    (change)="onChangeProject($event.target.value)">
+                                    <option [value]="null">Select Project</option>
+                                    <option *ngFor="let projects of project" [value]="projects.Id">
+                                        {{projects.Name}}
+                                    </option>
+                                </select>
+                                <div *ngIf="formErrors.ProjectId" class="alert alert-danger">
+                                    {{formErrors.ProjectId}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="TeamId">Team Name</label>
+                                <select class="form-control" formControlName="TeamId" id="TeamId" name="TeamId">
+                                    <option [ngValue]="null">Select Team</option>
+                                    <option *ngFor="let teamList of team" [value]="teamList.Id">
+                                        {{teamList.Name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="text-align: left;">
+                                <button class="btn btn-primary" (click)="back()"> Back </button>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset style="background: #f2f2f2;">
+                    <legend>Basic Information</legend>
+                    <div class="row">
+                        <div class="col">
+                            <label for="ContactNo">Contact Number </label>
+                            <input type="text" class="form-control" formControlName="ContactNo" id="ContactNo"
+                                name="ContactNo">
+                        </div>
+                        <div class="col">
+                            <label for="Location">Location</label>
+                            <select type="text" class="form-control" formControlName="Location" id="Location"
+                                name="Location">
+                                <option [ngValue]="null">Select Location</option>
+                                <option [value]="1">Offshore</option>
+                                <option [value]="2">Onshore</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="Billable">Billability</label>
+                            <select type="text" class="form-control" formControlName="Billable" id="Billable"
+                                name="Billable">
+                                <option [ngValue]="null">Select Billability</option>
+                                <option [value]="1">Non-Billable</option>
+                                <option [value]="2">Billable</option>
+                            </select>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align: right;">
+                            <button class="btn btn-primary" (click)="next()"> Next </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                <fieldset style="background: #f2f2f2;">
+                    <legend>Basic Information</legend>
+                    <div class="row">
+                        <div class="col">
+                            <label for="RLGUserName">RLG User Name </label>
+                            <input type="text" class="form-control" formControlName="RLGUserName" id="RLGUserName"
+                                name="RLGUserName">
+                        </div>
+                        <div class="col">
+                            <label for="RLGStaffId">RLG Staff ID </label>
+                            <input type="text" class="form-control" formControlName="RLGStaffId" id="RLGStaffId"
+                                name="RLGStaffId">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="RLGRoleId">RLG Role</label>
+                            <select class="form-control" formControlName="RLGRoleId" id="RLGRoleId" name="RLGRoleId">
+                                <option [ngValue]="null">Select RLG Role</option>
+                                <option *ngFor="let rlgRole of accountRole" [value]="rlgRole.Id">
+                                    {{rlgRole.Name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="RLGEmail">RLG Email </label>
+                            <input type="text" class="form-control" formControlName="RLGEmail" id="RLGEmail"
+                                name="RLGEmail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="RLGDateofJoining">RLG Date of Joining </label>
+                            <input type="text" class="form-control" placeholder="dd-MM-yyyy" bsDatepicker
+                                value="{{associateForm.value.RLGDateofJoining |date:'dd-MM-yyyy' }}"
+                                formControlName="RLGDateofJoining" id="RLGDateofJoining" name="RLGDateofJoining" />
+                        </div>
+                        <div class="col">
+                            <label for="RLGDateofLeaving">RLG Date of Leaving </label>
+                            <input type="text" class="form-control" placeholder="dd-MM-yyyy" bsDatepicker
+                                value="{{associateForm.value.RLGDateofLeaving |date:'dd-MM-yyyy' }}"
+                                formControlName="RLGDateofLeaving" id="RLGDateofLeaving" name="RLGDateofLeaving" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="AssetNo">Asset No</label>
+                            <input type="text" class="form-control" formControlName="AssetNo" id="AssetNo"
+                                name="AssetNo" />
+                        </div>
+                        <div class="col">
+                            <label for="VirtualMachineNo">Virtual Machine No</label>
+                            <input type="text" class="form-control" formControlName="VirtualMachineNo"
+                                id="VirtualMachineNo" name="VirtualMachineNo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="Portfolio">Portfolio</label>
+                            <select class="form-control" formControlName="Portfolio" id="Portfolio" name="Portfolio">
+                                <option [ngValue]="null">Select Portfolio</option>
+                                <option [value]="1">Yes</option>
+                                <option [value]="2">No</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="RLGExperience">RLG Experience(months) </label>
+                            <input type="text" class="form-control" formControlName="RLGExperience" id="RLGExperience"
+                                name="RLGExperience" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" style="text-align: left;">
+                            <button class="btn btn-primary" (click)="back()"> Back </button>
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            <button class="btn btn-primary" (click)="next()"> Next </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="information-part1" class="content" role="tabpanel" aria-labelledby="information-part1-trigger">
+                <fieldset style="background: #f2f2f2;">
+                    <legend>Basic Information</legend>
+                    <div class="row">
+                        <div class="col">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name">
+                        </div>
+                        <div class="col">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name">
+                        </div>
+                        <div class="col">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align: left;">
+                            <button class="btn btn-primary" (click)="back()"> Back </button>
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            <button class="btn btn-primary" (click)="next()"> Next </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="information-part2" class="content" role="tabpanel" aria-labelledby="information-part2-trigger">
+                <fieldset style="background: #f2f2f2;">
+                    <legend>Basic Information</legend>
+                    <div class="needs-validation" novalidate style="padding: 10px;">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltip01">First name</label>
+                                <input type="text" class="form-control" id="validationTooltip01"
+                                    placeholder="First name" value="Mark" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltip02">Last name</label>
+                                <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name"
+                                    value="Otto" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltipUsername">Username</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="validationTooltipUsername"
+                                        placeholder="Username" aria-describedby="validationTooltipUsernamePrepend"
+                                        required>
+                                    <div class="invalid-tooltip">
+                                        Please choose a unique and valid username.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltip01">First name</label>
+                                <input type="text" class="form-control" id="validationTooltip01"
+                                    placeholder="First name" value="Mark" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltip02">Last name</label>
+                                <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name"
+                                    value="Otto" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="validationTooltipUsername">Username</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="validationTooltipUsername"
+                                        placeholder="Username" aria-describedby="validationTooltipUsernamePrepend"
+                                        required>
+                                    <div class="invalid-tooltip">
+                                        Please choose a unique and valid username.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationTooltip03">City</label>
+                                <input type="text" class="form-control" id="validationTooltip03" placeholder="City"
+                                    required>
+                                <div class="invalid-tooltip">
+                                    Please provide a valid city.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationTooltip04">State</label>
+                                <input type="text" class="form-control" id="validationTooltip04" placeholder="State"
+                                    required>
+                                <div class="invalid-tooltip">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationTooltip05">Zip</label>
+                                <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip"
+                                    required>
+                                <div class="invalid-tooltip">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col" style="text-align: left;">
+                                <button class="btn btn-primary" (click)="back()"> Back </button>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- <div>
+    <div class="form-group  col-md-6 col-md-offset-5">
+        <div style="text-align:right;padding-bottom: 15px;">
+            <button name="add" type="submit" value="add" class="btn btn-primary"
+                [disabled]="!associateForm.valid">{{mode}}</button>
+            <button [routerLink]="['/onboarding/associate-List']" class="btn btn-primary">
+                Back
+            </button>
+        </div>
+    </div>
+</div> -->

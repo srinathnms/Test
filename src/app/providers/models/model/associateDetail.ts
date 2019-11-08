@@ -1,0 +1,22 @@
+﻿export interface IAssociateDetail {
+    AssociateId: number,
+    CognizantId: number,
+    AssociateName: string,
+    RLGUserName: string,
+    RLGStaffId: string,
+    RLGRoleId: string,
+    RLGEmail: string,
+    AssetNo: string,
+    VirtualMachineNo: string,
+    Portfolio: string,
+    RLGDateofJoining: Date,
+    RLGDateofLeaving: Date,
+    RLGExperience: number,
+    Billable: boolean,
+    Location: string,
+    ContactNo: number,
+    ProjectId: string,
+    TeamId: string,
+    CognizantRoleId: string,
+    CognizantEmailId: string
+}

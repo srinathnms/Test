@@ -1,0 +1,62 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+  <div class="column align-center text-center">
+    <h3 style="color: #623073;">Plan Detail</h3>
+  </div>
+</div>
+
+<div class="table-responsive text-nowrap table-content">
+  <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr style="background-color: #623073;color: #fff;">
+        <th class="text-center">Week</th>
+        <th class="text-center">Day</th>
+        <th>Title</th>
+        <th class="text-center">Scheduled Date</th>
+        <th class="text-center">Upload Document</th>
+        <th></th>
+        <th class="text-center">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let associateplan of associatePlans; let i= index">
+        <td>{{associateplan.Week}}</td>
+        <td>{{associateplan.Day}}</td>
+        <td><a> Web Designer /UX designer / Ul designer / JavaScript Developer</a></td>
+        <td>{{associateplan.ScheduledDate | date: 'dd-MM-yyyy'}}</td>
+        <td>
+          <div *ngIf="associateplan.ProofType==1" style="text-align: center;">
+            <label class="input-group-btn" style="width: 100%;">
+              <span class="btn btn-primary form-control file-upload"
+                style="background-color: #623073 !important;border-color: #421853 !important;">
+                <span style="font-size: 14px;">Choose File</span><input type="file"
+                  (change)="onFileSelected($event, associateplan, i)" id="{{'file'+i}}" data-max-size="2048"
+                  name="pdf_file" accept="image/x-png,image/jpeg" style="display: none;">
+              </span>
+            </label><br>
+            <small class="text-word-wrap" title="{{currentInputFileName ? currentInputFileName : 'No File Chosen'}}">
+              {{associateplan.filePath ? associateplan.filePath : 'No File Chosen'}}</small>
+          </div>
+          <input style=" width: 100%;" *ngIf="associateplan.ProofType==2" class="form-control" type="text"
+            placeholder="dd-MM-yyyy" bsDatepicker value="{{ associateplan.CompletionDate | date:'dd-MM-yyyy'}}"
+            [(bsValue)]="associateplan.CompletionDate" [bsConfig]="bsConfig" placement="bottom left" />
+        </td>
+        <td><button *ngIf="associateplan.ProofType==1" id="btnUpload" class="btn btn-primary" name="Upload"
+            (click)="uploadFile(associateplan,'file'+i)">
+            Upload
+          </button>
+          <button *ngIf="associateplan.ProofType==2" class="btn btn-primary"
+            (click)="updateAssociatePlan(associateplan)">
+            Update
+          </button>
+        </td>
+        <td>
+          <a *ngIf="associateplan.ProofType==1"
+            (click)="downloadFile(associateplan.Proof,associateplan.KnowledgeTransferTitle)">Download</a>
+          <span *ngIf="associateplan.ProofType==2">
+            {{associateplan.CompletionDate | date: 'dd-MM-yyyy'}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

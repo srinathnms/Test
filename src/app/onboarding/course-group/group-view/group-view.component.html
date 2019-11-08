@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12">
+        <span class="one page-title">Course Group Detail</span>
+        <i class="fa fa-window-close float-right" style="font-size: 25px !important;" (click)="onNoClick()"  aria-hidden="true"></i>
+    </div>
+</div>
+
+<div class="modal-body">
+  <div class="table-responsive text-nowrap table-content">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr style="background-color: #623073;color: #fff;">
+          <th scope="col">S.No</th>
+          <th class="text-center">Title</th>
+          <th class="text-center">Code</th>
+          <th>Url</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Document Type</th>
+          <th class="text-center">Course Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let courseData of courseList;let i=index" scope="row">
+          <td>{{i+1}}</td>
+          <td>{{courseData.title}}</td>
+          <td>{{courseData.code}}</td>
+          <td>{{courseData.url}}</td>
+          <td>{{courseData.description}}</td>
+          <td>{{courseData.documentType}}</td>
+          <td>{{courseData.courseType}}</td>
+        </tr>
+        <tr *ngIf="courseList==0">
+          <td class="text-center" colspan="100%"> No Record Found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="float-right">
+  <button type="button" class="btn btn-default" (click)="onNoClick()">Close</button>
+</div>

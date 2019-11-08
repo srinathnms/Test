@@ -1,0 +1,42 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+    <div class="column align-center text-center">
+        <h3 style="color: #623073;">Plan Detail</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-4" style="padding-top: 15px;" *ngFor="let item of dashboardView">
+        <div class="card">
+            <div class="card-header">{{item.Team ? item.Project + ' - ' + item.Team : item.Project}}</div>
+            <div class="card-body">
+                <canvas baseChart [data]="item.DoughnutChartData" [chartType]="doughnutChartType"
+                    [plugins]="doughnutChartPlugins" [colors]="doughnutChartColours" [options]="doughnutOptions"
+                    (chartClick)="chartClicked($event,item.DoughnutChartData)"></canvas>
+            </div>
+            <div class="card-footer-new">
+                <h6 *ngFor="let role of item.Roles">
+                    {{role.Role + ' : ' + role.CompletedCount + '/' + role.TotalCount}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4">
+    <div class="card">
+        <h5 class="header">Think Beyond</h5>
+        <div style="display: block;width: 100px; height: 100px;"><iframe class="chartjs-hidden-iframe" tabindex="-1"
+                style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+            <canvas basechart="" width="100" height="100" style="display: block; width: 100px; height: 100px;"></canvas>
+            <div class="donut-inner">
+                <h5><b>48%</b></h5>
+            </div>
+            <div class="description">
+                <div class="role">
+                    <h6>Business Analyst : 4/4</h6>
+                    <h6>Developer : 5/14</h6>
+                    <h6>Tester : 3/7</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

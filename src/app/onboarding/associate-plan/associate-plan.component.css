@@ -1,0 +1,13 @@
+.file-upload {
+    padding: 0 !important;
+    padding-top: 8px !important;
+    font-size: 8px !important;
+    line-height: 0.5 !important;
+}
+
+.text-word-wrap {
+    display:block;
+    width:150px;
+    word-wrap:break-word;
+    overflow: hidden;
+}

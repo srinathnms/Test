@@ -1,0 +1,48 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+  <div class="column align-center text-center">
+    <h3 style="color: #623073;">Associate Detail</h3>
+  </div>
+</div>
+
+<div *ngIf="isAdmin" style="text-align:right;padding-bottom: 15px;">
+  <button [routerLink]="['/onboarding/associate-details']" class="btn btn-primary">
+    Add Associate
+  </button>
+</div>
+<div *ngIf="associateCount==0">
+  <div>No Records Exists</div>
+</div>
+
+<div *ngIf="associateCount!=0" class="table-responsive text-nowrap table-content">
+  <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr style="background-color: #623073;color: #fff;">
+        <th class="text-center">S.No</th>
+        <th class="text-center">Assiciate ID</th>
+        <th> Associate Name</th>
+        <th class="text-center">Email Id </th>
+        <th class="text-center">Billable</th>
+        <th>Project Name</th>
+        <th class="text-center">Contact No</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let associateData of associateDetail;let i=index">
+        <td> {{i+1}} </td>
+        <td>{{associateData.CognizantId}}</td>
+        <td>{{associateData.AssociateName}}</td>
+        <td>{{associateData.CognizantEmailId}}</td>
+        <td>{{associateData.Billable==2?'yes':'No'}}</td>
+        <td>{{associateData.ProjectName}}</td>
+        <td>{{associateData.ContactNo}}</td>
+        <td>
+          <a class="glyphicon glyphicon-pencil" title="Edit"
+            [routerLink]="['/onboarding/associate-details',associateData.AssociateId]">Edit</a>
+          <a class="glyphicon glyphicon-remove" title="Delete"
+            (click)="deleteAssociateDetail(associateData.AssociateId)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
