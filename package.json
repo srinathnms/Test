@@ -26,7 +26,7 @@
     "bs-stepper": "^1.7.0",
     "chart.js": "^2.8.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "ng2-charts": "^2.3.0",
     "ng4-loading-spinner": "^1.2.3",
